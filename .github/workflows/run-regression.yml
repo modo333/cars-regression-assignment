@@ -5,6 +5,7 @@ on:
   push:
     paths:
       - regression_cars.py
+      - neural_network.py
       - cars.csv
       - requirements.txt
       - .github/workflows/run-regression.yml
