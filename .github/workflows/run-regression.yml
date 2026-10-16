@@ -11,10 +11,10 @@ on:
 
 jobs:
   regression:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
           python-version: '3.11'
       - name: Install packages
@@ -22,7 +22,7 @@ jobs:
       - name: Run regression
         run: python regression_cars.py
       - name: Upload graph
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: regression-graph
           path: cars_regression.png
