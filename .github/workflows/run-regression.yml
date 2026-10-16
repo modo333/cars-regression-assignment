@@ -1,0 +1,28 @@
+name: Run regression
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - regression_cars.py
+      - cars.csv
+      - requirements.txt
+      - .github/workflows/run-regression.yml
+
+jobs:
+  regression:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install packages
+        run: python -m pip install -r requirements.txt
+      - name: Run regression
+        run: python regression_cars.py
+      - name: Upload graph
+        uses: actions/upload-artifact@v4
+        with:
+          name: regression-graph
+          path: cars_regression.png
